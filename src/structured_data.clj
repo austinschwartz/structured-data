@@ -114,13 +114,17 @@
          (map :authors books)))
 
 (defn all-author-names [books]
-  :-)
+  (set (map :name (authors books))))
 
 (defn author->string [author]
-  :-)
+  (str (:name author)
+       (if (nil? (:birth-year author))
+                ""
+                (str " (" (str (:birth-year author))
+                     " - " (str (:death-year author)) ")"))))
 
 (defn authors->string [authors]
-  :-)
+  (apply str (interpose ", " (map author->string authors))))
 
 (defn book->string [book]
   :-)
